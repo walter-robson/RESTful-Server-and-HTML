@@ -2,7 +2,9 @@
 console.log("Page load happened!")
 
 var submitButton = document.getElementById('submit-button')
-submitButton.onclick = function(){
+submitButton.onmouseup = getFormInfo;
+
+function getFormInfo(){
     console.log("Entered get Form Info!")
     // get text from title, author and story
     var email_text = document.getElementById('input-email').value;
