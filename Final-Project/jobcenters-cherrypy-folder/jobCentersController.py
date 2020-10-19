@@ -19,7 +19,7 @@ class JobCenterController(object):
 
 
                 try:
-                        job_center = self.jcdb.get_movie(job_center)
+                        job_center = self.jcdb.get_job_center(job_center_id)
                         if job_center is not None:
                                 output['id'] = job_center_id
                                 output['name'] = job_center[0]
@@ -58,20 +58,21 @@ class JobCenterController(object):
                 '''when DELETE for /dictionary/dictionary_id comes in, we remove that job center from jcdb'''
                 output = {'result': 'success'}
                 job_center_id = int(job_center_id)
-                self.jcdb.delete_movie(job_center_id)
+                self.jcdb.delete_job_center(job_center_id)
                 return json.dumps(output)
 
         def GET_INDEX(self):
                 '''when GET request for /dictionary/ comes in, we respond with all the job center information in a json str'''
                 output = {'result':'success'}
-                output['job_center'] = []
+                output['job_centers'] = []
 
                 try:
                         for jcid in self.jcdb.get_job_centers():
                                 job_center = self.jcdb.get_job_center(jcid)
+                                
                                 djob_center = {'id':jcid, 'name':job_center[0],
                                     'borough':job_center[1], 'address': job_center[2], 'phone_number': job_center[3], 'comments': job_center[4]}
-                                output['job_center'].append(djob_center)
+                                output['job_centers'].append(djob_center)
                 except Exception as ex:
                         output['result'] = 'error'
                         output['message'] = str(ex)
@@ -84,11 +85,11 @@ class JobCenterController(object):
                 data = json.loads(cherrypy.request.body.read().decode('utf-8'))
                 
                 jcid = 0
-                for key in self.jcdb.movie_names:
+                for key in self.jcdb.job_center_names:
                    jcid = max(key, jcid)
                 jcid+= 1
                 job_center = [data['name'], data['borough'], data['address'], data['phone_number'], data['comments']]
-                self.jcdb.set_movie(jcid, job_center)
+                self.jcdb.set_job_center(jcid, job_center)
                 output['id'] = jcid
                 return json.dumps(output)
 

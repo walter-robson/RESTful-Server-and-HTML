@@ -4,7 +4,7 @@ import json
 
 class TestJobCenters(unittest.TestCase):
 
-    SITE_URL = 'localhost:51086' # replace with your port number and 
+    SITE_URL = 'http://student00.cse.nd.edu:51086' # replace with your port number and 
     print("testing for server: " + SITE_URL)
     JOB_CENTER_URL = SITE_URL + '/dictionary/'
     RESET_URL = SITE_URL + '/reset/'
@@ -32,7 +32,7 @@ class TestJobCenters(unittest.TestCase):
 
     def test_job_centers_put_key(self):
         self.reset_data()
-        job_center_id = 10
+        job_center_id = 9
 
         r = requests.get(self.JOB_CENTER_URL + str(job_center_id))
         self.assertTrue(self.is_json(r.content.decode('utf-8')))
@@ -43,6 +43,10 @@ class TestJobCenters(unittest.TestCase):
         jc = {}
         jc['name'] = 'ABC'
         jc['borough'] = 'QUEENS'
+        jc['id'] = 30
+        jc['address'] = '100 manhattan ave'
+        jc['phone_number'] =  '571-420-3987'
+        jc['comments'] = 'this is a comment'
         r = requests.put(self.JOB_CENTER_URL + str(job_center_id), data = json.dumps(jc))
         self.assertTrue(self.is_json(r.content.decode('utf-8')))
         resp = json.loads(r.content.decode('utf-8'))

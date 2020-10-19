@@ -4,7 +4,7 @@ import json
 
 class TestReset(unittest.TestCase):
 
-    SITE_URL = 'localhost:51086' # replace with your port id
+    SITE_URL = 'http://student00.cse.nd.edu:51086' # replace with your port id
     print("Testing for server: " + SITE_URL)
     RESET_URL = SITE_URL + '/reset/'
 
@@ -16,7 +16,7 @@ class TestReset(unittest.TestCase):
         self.assertEqual(resp['result'], 'success')
         r = requests.get(self.SITE_URL +  '/dictionary/')
         resp = json.loads(r.content.decode())
-        job_centers = resp['job_center']
+        job_centers = resp['job_centers']
         self.assertEqual(job_centers[0]['name'], 'Concourse')
 
 
@@ -33,14 +33,14 @@ class TestReset(unittest.TestCase):
         r = requests.put(self.SITE_URL + '/dictionary/' + str(job_center_id), data=json.dumps(j))
 
         j = {}
-        r = requests.put(self.RESET_URL + str(movie_id), data=json.dumps(m))
+        r = requests.put(self.RESET_URL + str(job_center_id), data=json.dumps(j))
         resp = json.loads(r.content.decode())
         self.assertEqual(resp['result'], 'success')
 
         r = requests.get(self.SITE_URL + '/dictionary/')
         resp = json.loads(r.content.decode())
         job_centers = resp['job_centers']
-        self.assertEqual(job_center[0]['name'], 'Concourse')
+        self.assertEqual(job_centers[0]['name'], 'Concourse')
 
 if __name__ == "__main__":
     unittest.main()

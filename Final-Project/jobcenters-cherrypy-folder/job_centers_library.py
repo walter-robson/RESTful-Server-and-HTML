@@ -19,7 +19,7 @@ class _job_center_database:
                 address = ' '.join(components[2:6])
                 phone_number = components[6]
                 comment = components[7]
-                print("The ID is", job_center_id, "and the name is", jcname, "and address is", address, "!")
+                #print("The ID is", job_center_id, "and the name is", jcname, "and address is", address, "!")
                 self.boroughs[job_center_id] = borough
                 self.job_center_names[job_center_id] = jcname
                 self.addresses[job_center_id] = address
@@ -28,18 +28,20 @@ class _job_center_database:
         f.close()
 
        def get_job_centers(self):
-        return self.job_center_names.keys()
+        #print(list(self.job_center_names.keys()))
+        return list(self.job_center_names.keys())
 
        def get_job_center(self, jcid):
         try:
                 jcname = self.job_center_names[jcid]
                 borough = self.boroughs[jcid]
-                addresss = self.addresses[jcid]
+                address = self.addresses[jcid]
                 phone_number = self.phone_numbers[jcid]
                 comments = self.comments[jcid]
 
                 job_center = list((jcname, borough, address, phone_number, comments))
         except Exception as ex:
+                print(ex)
                 job_center = None
         return job_center
 
@@ -53,7 +55,7 @@ class _job_center_database:
 
        def delete_job_center(self, jcid):
         del(self.job_center_names[jcid])
-        del(self.movie_boroughs[jcid])
+        del(self.boroughs[jcid])
         del(self.addresses[jcid])
         del(self.phone_numbers[jcid])
         del(self.comments[jcid])
