@@ -1,8 +1,7 @@
-
 Command         Resource        Input Example(body of request)  Output Example(response received from server)            Behavior
 
-PUT        /dictionary/:key
-    e.g. /dictionary/FacilityName     {"value":"Review"}        {"result": "success"}                   Adds that key-value pair to the dictionary
+PUT        /ratings/:key
+    e.g. /ratings/FacilityName     {"value":"Review"}        {"result": "success"}                   Adds that key-value pair to the dictionary
 
 POST       /dictionary/        {"key" : "Facility Name",        {"result": "success"}                           Adds a key-value pair from the message
                                                                                                                            body to the dictionary
@@ -16,7 +15,7 @@ GET        /dictionary/                                         {"result": "succ
                                                                  {"key": "Facility Name", 
                                                                  "value": "address, phone number, reviews"}]}
 
-DELETE     /dictionary/:key                                     {"result": "success"}                             Deletes that key-value pair from the 
+DELETE     /ratings/:key                                     {"result": "success"}                             Deletes that key-value pair from the 
                 e.g.                                                                                               dictionary. You can check deletion 
          /dictionary/FacilityName                                                                                                with a GET
 
