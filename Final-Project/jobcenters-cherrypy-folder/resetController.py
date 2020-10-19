@@ -4,8 +4,8 @@ from job_centers_library import _job_center_database
 
 class ResetController(object):
 
-    def __init__(self, mdb=None):
-        if mdb is None:
+    def __init__(self, jcdb=None):
+        if jcdb is None:
             self.jcdb = _job_center_database()
         else:
             self.jcdb = jcdb
@@ -17,8 +17,8 @@ class ResetController(object):
 
         data = json.loads(cherrypy.request.body.read().decode())
 
-        self.mdb.__init__()
-        self.mdb.load_job_centers('Directory_Of_Job_Centers.csv')
+        self.jcdb.__init__()
+        self.jcdb.load_job_centers('Directory_Of_Job_Centers.csv')
 
         return json.dumps(output)
 
@@ -35,7 +35,7 @@ class ResetController(object):
 
             job_center = jcdbtmp.get_job_center(jcid)
             
-            self.jcdb.set_job_center(jcid, job_center) #TODO remember to reset genre also
+            self.jcdb.set_job_center(jcid, job_center)
 
 
         except Exception as ex:

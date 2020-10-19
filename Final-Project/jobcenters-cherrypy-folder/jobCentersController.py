@@ -1,6 +1,6 @@
 import cherrypy
 import re, json
-from job_centers_library import _job_centers_database
+from job_centers_library import _job_center_database
 
 class JobCenterController(object):
 
@@ -24,9 +24,9 @@ class JobCenterController(object):
                                 output['id'] = job_center_id
                                 output['name'] = job_center[0]
                                 output['borough'] = job_center[1]
-								output['address'] = job_center[2]
-								output['phone_number'] = job_center[3]
-								output['comments'] = job_center[4]
+                                output['address'] = job_center[2]
+                                output['phone_number'] = job_center[3]
+                                output['comments'] = job_center[4]
                         else:
                                 output['result'] = 'error'
                                 output['message'] = 'job center not found'
@@ -46,9 +46,9 @@ class JobCenterController(object):
                 job_center = list()
                 job_center.append(data['name'])
                 job_center.append(data['borough'])
-				job_center.append(data['address'])
-				job_center.append(data['phone_number'])
-				job_center.append(data['comments'])
+                job_center.append(data['address'])
+                job_center.append(data['phone_number'])
+                job_center.append(data['comments'])
 
                 self.jcdb.set_job_center(job_center_id, job_center)
 
@@ -70,7 +70,7 @@ class JobCenterController(object):
                         for jcid in self.jcdb.get_job_centers():
                                 job_center = self.jcdb.get_job_center(jcid)
                                 djob_center = {'id':jcid, 'name':job_center[0],
-										'borough':job_center[1], 'address': job_center[2], 'phone_number': job_center[3], 'comments': job_center[4]}
+                                    'borough':job_center[1], 'address': job_center[2], 'phone_number': job_center[3], 'comments': job_center[4]}
                                 output['job_center'].append(djob_center)
                 except Exception as ex:
                         output['result'] = 'error'
@@ -99,8 +99,8 @@ class JobCenterController(object):
                 self.jcdb.boroughs = dict()
                 self.jcdb.job_center_names = dict()
                 self.jcdb.addresses = dict()
-				self.jcdb.phone_numbers = dict()
-				self.jcdb.comments = dict()
+                self.jcdb.phone_numbers = dict()
+                self.jcdb.comments = dict()
                 output = {'result': 'success'}
                 return json.dumps(output)
 

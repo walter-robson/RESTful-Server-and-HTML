@@ -1,7 +1,7 @@
 import cherrypy
-from jobcentersController import JobCenterController
+from jobCentersController import JobCenterController
 from resetController import ResetController
-from ratingsController import RatingsController
+from commentsController import CommentsController
 from job_centers_library import _job_center_database
 
 
@@ -10,9 +10,9 @@ def start_service():
 
     jcdb = _job_center_database()
 
-    jobCenterController     = jobCenterController(jcdb=jcdb) 
+    jobCenterController     = JobCenterController(jcdb=jcdb) 
     resetController     = ResetController(jcdb=jcdb)
-    ratingsController   = RatingsController(jcdb=jcdb)
+    commentsController   = CommentsController(jcdb=jcdb)
 
 
     dispatcher.connect('job_center_get', '/dictionary/:job_center_id', controller=jobCenterController, action = 'GET_KEY', conditions=dict(method=['GET']))
@@ -25,7 +25,7 @@ def start_service():
     dispatcher.connect('reset_put', '/reset/:job_center_id', controller=resetController, action = 'PUT_KEY', conditions=dict(method=['PUT']))
     dispatcher.connect('reset_index_put', '/reset/', controller=resetController, action = 'PUT_INDEX', conditions=dict(method=['PUT']))
 
-    dispatcher.connect('rating_get', '/ratings/:job_center_id', controller=ratingsController, action = 'GET_KEY', conditions=dict(method=['GET']))
+    dispatcher.connect('comment_get', '/comments/:job_center_id', controller=commentsController, action = 'GET_KEY', conditions=dict(method=['GET']))
 
 
     conf = {

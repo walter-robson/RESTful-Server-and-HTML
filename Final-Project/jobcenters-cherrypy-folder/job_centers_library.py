@@ -10,7 +10,7 @@ class _job_center_database:
         # could add long lat
 
        def load_job_centers(self, job_center_file):
-        f = open(movie_file)
+        f = open(job_center_file)
         for job_center_id, line in enumerate(f):
                 line = line.rstrip()
                 components = line.split(",")
