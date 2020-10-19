@@ -2,7 +2,7 @@
 console.log("Page load happened!")
 
 var submitButton = document.getElementById('submit-button')
-submitButton.onmouseup = getFormInfo;
+submitButton.onclick = getFormInfo;
 
 function getFormInfo(){
     console.log("Entered get Form Info!")
