@@ -21,3 +21,12 @@ class CommentsController(object):
 
 		return json.dumps(output)
 
+	def PUT_KEY(self, job_center_id):
+		''' When PUT request for /dictionary/job_center_id comes in, we append a new comment to that job center in jcdb'''
+		output = {'result': 'success'}
+		job_center_id = int(job_center_id)
+		data = json.loads(cherrypy.request.body.read().decode('utf-8'))
+
+		comment = data['comment']
+		self.jcdb.set_comment(job_center_id, comment);
+

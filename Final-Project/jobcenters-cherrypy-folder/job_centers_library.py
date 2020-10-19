@@ -62,6 +62,9 @@ class _job_center_database:
        def get_comments(self, jcid): #Need to update this to handle strings not numbers
         return (self.comments[jcid])
 
+       def set_comment(self, jcid, comment):
+             self.job_center_comments[jcid].append(comment)
+
    
        def delete_all_comments(self):
         for jcid in self.get_comments():
