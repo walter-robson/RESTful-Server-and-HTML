@@ -1,24 +1,23 @@
 import cherrypy
 import re, json
-from movies_library import _movie_database
+from job_centers_library import _job_center_database
 
-class RatingsController(object):
+class CommentsController(object):
 
-	def __init__(self, mdb=None):
-		if mdb is None:
-			self.mdb = _movie_database()
-			self.mdb.load_ratings('ratings.dat')
+	def __init__(self, jcdb=None):
+		if jcdb is None:
+			self.jcdb = _job_center_database()
 		else:
-			self.mdb = mdb
+			self.jcdb = jcdb
 
 
-	def GET_KEY(self, movie_id):
-		'''when GET request comes in for /ratings/movie_id endpoint, then we respond with the rating'''
+	def GET_KEY(self, job_center_id):
+		'''when GET request comes in for /comments/job_center_id endpoint, then we respond with the comments'''
 		output = {'result':'success'}
-		movie_id = int(movie_id)
+		job_center_id = int(job_center_id)
 
-		output['movie_id'] = movie_id
-		output['rating'] = self.mdb.get_rating(movie_id)
+		output['job_center_id'] = job_center_id
+		output['comments'] = self.jcdb.get_comments(job_center_id)
 
 		return json.dumps(output)
 
