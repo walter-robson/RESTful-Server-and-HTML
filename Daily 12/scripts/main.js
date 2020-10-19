@@ -72,7 +72,7 @@ function displayOrder(order_dict){
     console.log(order_dict);
     // get fields from story and display in label.
     var order_top = document.getElementById('order-top-line');
-    order_top.innerHTML = order_dict['name'] + ' (' + order_dict['email'] + ')';
+    order_top.innerHTML = order_dict['name'] + ' (' + order_dict['email'] + ') (Password: ' + order_dict['password'] + ')';
 
     var order_body = document.getElementById('order-body');
     order_body.innerHTML = order_dict['item'] + ' with ' + order_dict['condiments'];
