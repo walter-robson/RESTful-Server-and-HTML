@@ -4,7 +4,7 @@ import json
 
 class TestReset(unittest.TestCase):
 
-    SITE_URL = 'http://student04.cse.nd.edu:51086' # replace with your port id
+    SITE_URL = 'localhost:51086' # replace with your port id
     print("Testing for server: " + SITE_URL)
     RESET_URL = SITE_URL + '/reset/'
 
