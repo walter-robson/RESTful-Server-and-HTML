@@ -2,16 +2,16 @@ import unittest
 import requests
 import json
 
-class TestMovies(unittest.TestCase):
+class TestJobCenters(unittest.TestCase):
 
     SITE_URL = 'localhost:51086' # replace with your port number and 
     print("testing for server: " + SITE_URL)
-    MOVIES_URL = SITE_URL + '/movies/'
+    JOB_CENTER_URL = SITE_URL + '/dictionary/'
     RESET_URL = SITE_URL + '/reset/'
 
     def reset_data(self):
-        m = {}
-        r = requests.put(self.RESET_URL, data = json.dumps(m))
+        jc = {}
+        r = requests.put(self.RESET_URL, data = json.dumps(jc))
 
 
     def is_json(self, resp):
@@ -21,50 +21,50 @@ class TestMovies(unittest.TestCase):
         except ValueError:
             return False
 
-    def test_movies_get_key(self):
+    def test_job_centers_get_key(self):
         self.reset_data()
-        movie_id = 32
-        r = requests.get(self.MOVIES_URL + str(movie_id))
+        job_center_id = 9
+        r = requests.get(self.JOB_CENTER_URL + str(job_center_id))
         self.assertTrue(self.is_json(r.content.decode('utf-8')))
         resp = json.loads(r.content.decode('utf-8'))
-        self.assertEqual(resp['title'], 'Twelve Monkeys (1995)')
-        self.assertEqual(resp['genres'], 'Drama|Sci-Fi')
+        self.assertEqual(resp['name'], 'Dekalb')
+        self.assertEqual(resp['borough'], 'Brooklyn')
 
-    def test_movies_put_key(self):
+    def test_job_centers_put_key(self):
         self.reset_data()
-        movie_id = 95
+        job_center_id = 10
 
-        r = requests.get(self.MOVIES_URL + str(movie_id))
+        r = requests.get(self.JOB_CENTER_URL + str(job_center_id))
         self.assertTrue(self.is_json(r.content.decode('utf-8')))
         resp = json.loads(r.content.decode('utf-8'))
-        self.assertEqual(resp['title'], 'Broken Arrow (1996)')
-        self.assertEqual(resp['genres'], 'Action|Thriller')
+        self.assertEqual(resp['name'], 'Dekalb')
+        self.assertEqual(resp['borough'], 'Brooklyn')
 
-        m = {}
-        m['title'] = 'ABC'
-        m['genres'] = 'Sci-Fi|Fantasy'
-        r = requests.put(self.MOVIES_URL + str(movie_id), data = json.dumps(m))
+        jc = {}
+        jc['name'] = 'ABC'
+        jc['borough'] = 'QUEENS'
+        r = requests.put(self.JOB_CENTER_URL + str(job_center_id), data = json.dumps(jc))
         self.assertTrue(self.is_json(r.content.decode('utf-8')))
         resp = json.loads(r.content.decode('utf-8'))
         self.assertEqual(resp['result'], 'success')
 
-        r = requests.get(self.MOVIES_URL + str(movie_id))
+        r = requests.get(self.JOB_CENTER_URL + str(job_center_id))
         self.assertTrue(self.is_json(r.content.decode('utf-8')))
         resp = json.loads(r.content.decode('utf-8'))
-        self.assertEqual(resp['title'], m['title'])
-        self.assertEqual(resp['genres'], m['genres'])
+        self.assertEqual(resp['name'], jc['name'])
+        self.assertEqual(resp['borough'], jc['borough'])
 
-    def test_movies_delete_key(self):
+    def test_job_centers_delete_key(self):
         self.reset_data()
-        movie_id = 95
+        job_center_id = 10
 
-        m = {}
-        r = requests.delete(self.MOVIES_URL + str(movie_id), data = json.dumps(m))
+        jc = {}
+        r = requests.delete(self.JOB_CENTER_URL + str(job_center_id), data = json.dumps(jc))
         self.assertTrue(self.is_json(r.content.decode('utf-8')))
         resp = json.loads(r.content.decode('utf-8'))
         self.assertEqual(resp['result'], 'success')
 
-        r = requests.get(self.MOVIES_URL + str(movie_id))
+        r = requests.get(self.JOB_CENTER_URL + str(job_center_id))
         self.assertTrue(self.is_json(r.content.decode('utf-8')))
         resp = json.loads(r.content.decode('utf-8'))
         self.assertEqual(resp['result'], 'error')
