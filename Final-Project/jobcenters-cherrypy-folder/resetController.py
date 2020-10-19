@@ -1,14 +1,14 @@
 import cherrypy
 import re, json
-from movies_library import _movie_database
+from job_centers_library import _job_center_database
 
 class ResetController(object):
 
     def __init__(self, mdb=None):
         if mdb is None:
-            self.mdb = _movie_database()
+            self.jcdb = _job_center_database()
         else:
-            self.mdb = mdb
+            self.jcdb = jcdb
 
 
     def PUT_INDEX(self):
@@ -18,25 +18,24 @@ class ResetController(object):
         data = json.loads(cherrypy.request.body.read().decode())
 
         self.mdb.__init__()
-        self.mdb.load_movies('movies.dat')
-        self.mdb.load_ratings('ratings.dat')
+        self.mdb.load_job_centers('Directory_Of_Job_Centers.csv')
 
         return json.dumps(output)
 
-    def PUT_KEY(self, movie_id):
-        '''when PUT request comes in for /reset/movie_id endpoint, then that movie is reloaded and updated in mdb'''
+    def PUT_KEY(self, job_center_id):
+        '''when PUT request comes in for /reset/job_center_id endpoint, then that job center is reloaded and updated in jcdb'''
         output = {'result':'success'}
-        mid = int(movie_id)
+        jcid = int(job_center_id)
 
         try:
             data = json.loads(cherrypy.request.body.read().decode())
 
-            mdbtmp = _movie_database()
-            mdbtmp.load_movies('movies.dat')
+            jcdbtmp = _job_center_database()
+            jcdbtmp.load_job_centers('Directory_Of_Job_Centers.csv')
 
-            movie = mdbtmp.get_movie(mid)
+            job_center = jcdbtmp.get_job_center(jcid)
             
-            self.mdb.set_movie(mid, movie) #TODO remember to reset genre also
+            self.jcdb.set_job_center(jcid, job_center) #TODO remember to reset genre also
 
 
         except Exception as ex:
