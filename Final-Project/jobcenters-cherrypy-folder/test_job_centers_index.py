@@ -2,16 +2,16 @@ import unittest
 import requests
 import json
 
-class TestMoviesIndex(unittest.TestCase):
+class TestJobCentersIndex(unittest.TestCase):
 
     SITE_URL = 'localhost:51086' # replace with your assigned port id
     print("Testing for server: " + SITE_URL)
-    MOVIES_URL = SITE_URL + '/movies/'
+    JOB_CENTER_URL = SITE_URL + '/dictionary/'
     RESET_URL = SITE_URL + '/reset/'
 
     def reset_data(self):
-        m = {}
-        r = requests.put(self.RESET_URL, json.dumps(m))
+        jc = {}
+        r = requests.put(self.RESET_URL, json.dumps(jc))
 
     def is_json(self, resp):
         try:
@@ -20,53 +20,53 @@ class TestMoviesIndex(unittest.TestCase):
         except ValueError:
             return False
 
-    def test_movies_index_get(self):
+    def test_job_center_index_get(self):
         self.reset_data()
-        r = requests.get(self.MOVIES_URL)
+        r = requests.get(self.JOB_CENTER_URL)
         self.assertTrue(self.is_json(r.content.decode()))
         resp = json.loads(r.content.decode())
 
-        testmovie = {}
-        movies = resp['movies']
-        for movie in movies:
-            if movie['id'] == 32:
-                testmovie = movie
+        testjobcenter = {}
+        job_centers = resp['job_centers']
+        for job_center in job_centers:
+            if job_center['id'] == 10:
+                testjobcenter = job_center
 
-        self.assertEqual(testmovie['title'], 'Twelve Monkeys (1995)')
-        self.assertEqual(testmovie['genres'], 'Drama|Sci-Fi')
+        self.assertEqual(testjobcenter['name'], 'Dekalb')
+        self.assertEqual(testjobcenter['borough'], 'Brooklyn')
 
     def test_movies_index_post(self):
         self.reset_data()
 
-        m = {}
-        m['title'] = 'ABC'
-        m['genres'] = 'Sci-Fi|Fantasy'
-        r = requests.post(self.MOVIES_URL, data = json.dumps(m))
+        jc = {}
+        jc['name'] = 'ABC'
+        jc['borough'] = 'QUEENS'
+        r = requests.post(self.JOB_CENTER_URL, data = json.dumps(jc))
         self.assertTrue(self.is_json(r.content.decode()))
         resp = json.loads(r.content.decode())
         self.assertEqual(resp['result'], 'success')
-        self.assertEqual(resp['id'], 3953)
+        self.assertEqual(resp['id'], 30)
 
-        r = requests.get(self.MOVIES_URL + str(resp['id']))
+        r = requests.get(self.JOB_CENTER_URL + str(resp['id']))
         self.assertTrue(self.is_json(r.content.decode()))
         resp = json.loads(r.content.decode())
-        self.assertEqual(resp['title'], m['title'])
-        self.assertEqual(resp['genres'], m['genres'])
+        self.assertEqual(resp['name'], jc['name'])
+        self.assertEqual(resp['borough'], jc['borough'])
 
     def test_movies_index_delete(self):
         self.reset_data()
 
-        m = {}
-        r = requests.delete(self.MOVIES_URL, data = json.dumps(m))
+        jc = {}
+        r = requests.delete(self.JOB_CENTER_URL, data = json.dumps(jc))
         self.assertTrue(self.is_json(r.content.decode()))
         resp = json.loads(r.content.decode())
         self.assertEqual(resp['result'], 'success')
 
-        r = requests.get(self.MOVIES_URL)
+        r = requests.get(self.JOB_CENTER_URL)
         self.assertTrue(self.is_json(r.content.decode()))
         resp = json.loads(r.content.decode())
-        movies = resp['movies']
-        self.assertFalse(movies)
+        job_centers = resp['job_centers']
+        self.assertFalse(job_centers)
 
 if __name__ == "__main__":
     unittest.main()
