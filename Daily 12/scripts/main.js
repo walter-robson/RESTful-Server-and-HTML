@@ -8,7 +8,7 @@ function getFormInfo(){
     console.log("Entered get Form Info!")
     // get text from title, author and story
     var email_text = document.getElementById('input-email').value;
-    var password_text = document.getElementById('input-text').value;
+    var password_text = document.getElementById('input-password').value;
     var order_name = document.getElementById('input-name').value;
     console.log('Name:' + order_name + ' Email: ' + email_text + ' Password ' + password_text);
 
