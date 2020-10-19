@@ -1,32 +1,49 @@
 // respond to button click
 console.log("Page load happened!")
 
-var submitButton = document.getElementById('bsr-submit-button')
+var submitButton = document.getElementById('submit-button')
 submitButton.onmouseup = getFormInfo;
 
 function getFormInfo(){
     console.log("Entered get Form Info!")
     // get text from title, author and story
-    var title_text = document.getElementById('title-text').value;
-    var author_text = document.getElementById('author-text').value;
-    var story_text = document.getElementById('text-story').value;
+    var email_text = document.getElementById('title-text').value;
+    var password_text = document.getElementById('author-text').value;
+    var order_name = document.getElementById('text-story').value;
     console.log('title:' + title_text + ' author: ' + author_text + ' story ' + story_text);
 
-    // get checkbox state
-    var genres_string = "";
+    // get food type
+    var food_type = "";
     if (document.getElementById('checkbox-horror-value').checked){
-        console.log('detected horror!');
-        genres_string += "Horror,";
+        console.log('detected hotdog!');
+        genres_string = "Hotdog";
     }
 
     if (document.getElementById('checkbox-comedy-value').checked) {
-        console.log('detected comedy!');
-        genres_string += "Comedy,";
+        console.log('detected hamburger!');
+        genres_string = "Hamburger";
     }
 
     if (document.getElementById('checkbox-drama-value').checked) {
-        console.log('detected drama!');
-        genres_string += "Drama";
+        console.log('detected bratwurst!');
+        genres_string = "Bratwurst";
+    }
+
+    // get condiments
+    var condiments = "";
+    if (document.getElementById('checkbox-horror-value').checked){
+        console.log('detected Mustard!');
+        genres_string += "Mustard,";
+    }
+
+    if (document.getElementById('checkbox-comedy-value').checked) {
+        console.log('detected ketchup!');
+        genres_string = "Ketchup,";
+    }
+
+    if (document.getElementById('checkbox-drama-value').checked) {
+        console.log('detected Fry Sauce!');
+        genres_string = "Fry Sauce";
     }
     // make genre combined string
     console.log('genres: ' + genres_string);
