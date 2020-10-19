@@ -2,9 +2,7 @@
 console.log("Page load happened!")
 
 var submitButton = document.getElementById('submit-button')
-submitButton.onclick = getFormInfo;
-
-function getFormInfo(){
+submitButton.onclick = function(){
     console.log("Entered get Form Info!")
     // get text from title, author and story
     var email_text = document.getElementById('input-email').value;
@@ -65,7 +63,7 @@ function getFormInfo(){
 
     displayOrder(order_dict);
 
-}
+};
 
 function displayOrder(order_dict){
     console.log('entered displayOrder!');
