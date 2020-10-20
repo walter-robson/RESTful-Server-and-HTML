@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Title</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700" rel="stylesheet">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+   </head>
+   <body>
+
+      
+      <nav class="navbar navbar-inverse">
+         <div class="container">
+            <div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="#">Ryan Wigglesworth (rwiggles) and Walter Robson (wrobson)</a></div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+               <ul class="nav navbar-nav navbar-right">
+                  <li><a href="#">Link 1</a></li>
+                  <li><a href="#">Link 2</a></li>
+                  <li class="dropdown">
+                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Link 3 <span class="caret"></span></a>
+                     <ul class="dropdown-menu">
+                        <li><a href="#">Sub-link 1</a></li>
+                        <li><a href="#">Sub-link 2</a></li>
+                        <li><a href="#">Sub-link 3</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Sub-link 4</a></li>
+                     </ul>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </nav>
+
+      <div class="container">
+         <form class="bsr-form " action="">
+            <div class="form-group">
+               <label for="radios">Tailgate Food Type</label>
+               <div class="radio">
+                  <label>
+                     <input type="radio" name="bsr-radios" id="radio1" value="radio1" checked="checked">
+                     Hotdog
+                  </label>
+               </div>
+               <div class="radio">
+                  <label>
+                     <input type="radio" name="bsr-radios" id="radio2" value="radio2">
+                     Hamburger
+                  </label>
+               </div>
+               <div class="radio">
+                  <label>
+                     <input type="radio" name="bsr-radios" id="radio3" value="radio3">
+                     Bratwurst
+                  </label>
+               </div>
+            </div>
+            <div class="form-group">
+               <label for="checkboxes">Condiments</label>
+               <div class="checkbox" id="9918088">
+                  <label>
+                     <input type="checkbox" value="checkbox-1" id="checkbox-1">
+                     Mustard
+                  </label>
+               </div>
+               <div class="checkbox" id="4266181">
+                  <label>
+                     <input type="checkbox" value="checkbox-2" id="checkbox-2">
+                     Ketchup
+                  </label>
+               </div>
+               <div class="checkbox" id="5040123">
+                  <label>
+                     <input type="checkbox" value="checkbox-3" id="checkbox-3">
+                     Fry Sauce
+                  </label>
+               </div>
+               <div class="checkbox" id="7271781">
+                  <label>
+                     <input type="checkbox" value="checkbox-4" id="checkbox-4">
+                     Relish
+                  </label>
+               </div>
+            </div>
+            <div class="form-group">
+               <label for="tex-input">Name your food</label>
+               <input name="text-input" type="text" class="form-control" id="input-name">
+            </div>
+            <div class="form-group">
+               <label for="email">Email address</label>
+               <input name="email" type="email" class="form-control" id="input-email" placeholder="Email">
+            </div>
+            <div class="form-group">
+               <label for="password">Password</label>
+               <input type="password" class="form-control" id="input-password" placeholder="Password">
+            </div>
+            <p class='text-left'><a role='button' class='btn btn-success' id="submit-button" type="button">Submit</a></p>
+         </form>
+      </div>
+
+      <div class="container">
+        <p class="lead" id="order-top-line">
+            Order goes here!
+        </p>
+
+        <p id="order-body">
+            Order body goes here!
+        </p>
+    </div>
+
+      <script src="scripts/main.js" type="text/javascript"></script>
+      <div class="container"></div>
+      <footer class="footer">
+         <div class="container">
+            <hr>
+            <p class="text-muted">Place footer content here.</p>
+         </div>
+      </footer>
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+   </body>
+</html>
