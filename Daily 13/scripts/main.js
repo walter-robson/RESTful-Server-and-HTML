@@ -49,7 +49,7 @@ function updateNameWithResponse(name, response_text){
     if(response_json['name'] == null){
         label1.innerHTML = 'Apologies, we could not find your nationality.'
     } else{
-        label1.innerHTML =  name + ', your Nationality is ' + response_json['country'][0]['country_id'];
+        label1.innerHTML =  name + ', your country code is ' + response_json['country'][0]['country_id'];
         var nationality = response_json['country'][0]['country_id'];
         makeNetworkCallToNationalityAPI2(nationality, name);
     }
@@ -88,6 +88,6 @@ function updateNameWithResponse2(name, response_text){
     if(response_json['name'] == null){
         label2.innerHTML = 'Apologies, we could not find your nationality.'
     } else{
-        label2.innerHTML =  name + ', your Nationality is ' + response_json['name'];
+        label2.innerHTML =  name + ', that means you are from ' + response_json['name'];
     }
 } // end of updateAgeWithResponse
