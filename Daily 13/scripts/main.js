@@ -80,14 +80,14 @@ function makeNetworkCallToNationalityAPI2(nationality, name){
 
 } // end of make nw call
 
-function updateNameWithResponse(name, response_text){
+function updateNameWithResponse2(name, response_text){
     var response_json = JSON.parse(response_text);
     // update a label
-    var label1 = document.getElementById("response-line2");
+    var label2 = document.getElementById("response-line2");
 
     if(response_json['name'] == null){
-        label1.innerHTML = 'Apologies, we could not find your nationality.'
+        label2.innerHTML = 'Apologies, we could not find your nationality.'
     } else{
-        label1.innerHTML =  name + ', your Nationality is ' + response_json['name'];
+        label2.innerHTML =  name + ', your Nationality is ' + response_json['name'];
     }
 } // end of updateAgeWithResponse
