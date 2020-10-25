@@ -38,18 +38,9 @@ function makeRequest(){
     var xhr = new XMLHttpRequest(); // 1 - creating request object
     var url = null;
     if(key != null){
-        if(message_body != null){
-            url = url_base + ':' + port + '/movies/' + key + '/' + message_body;
-        } else {
-            url = url_base + ':' + port + '/movies/' + key;
-        }
-        
-    } else {
-        if(message_body != null){
-            var url = url_base + ':' + port + '/movies/' + message_body;
-        } else {
-            var url = url_base + ':' + port + '/movies/';
-        }
+        url = url_base + ':' + port + '/movies/' + key;   
+    } else {  
+        var url = url_base + ':' + port + '/movies/';
     }
     
     xhr.open(action, url, true); // 2 - associates request attributes with xhr
@@ -68,8 +59,12 @@ function makeRequest(){
     }
 
     // actually make the network call
-    xhr.send(null) // last step - this actually makes the request
-
+    if(message_body != null) {
+        xhr.send(message_body)
+    } else {
+     xhr.send(null) // last step - this actually makes the request
+    }
+   
 
 
 };
