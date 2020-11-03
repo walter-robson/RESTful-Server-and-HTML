@@ -4,6 +4,15 @@ from resetController import ResetController
 from commentsController import CommentsController
 from job_centers_library import _job_center_database
 
+class optionsController:
+    def OPTIONS(self, *args, **kwargs):
+        return ""
+
+def CORS():
+    cherrypy.response.headers["Access-Control-Allow-Origin"] = "*"
+    cherrypy.response.headers["Access-Control-Allow-Methods"] = "GET, PUT, POST, DELETE, OPTIONS"
+    cherrypy.response.headers["Access-Control-Allow-Credentials"] = "true"
+
 
 def start_service():
     dispatcher = cherrypy.dispatch.RoutesDispatcher()
@@ -27,7 +36,15 @@ def start_service():
 
     dispatcher.connect('comment_get', '/comments/:job_center_id', controller=commentsController, action = 'GET_KEY', conditions=dict(method=['GET']))
 
+    # CORS related options connections
+    dispatcher.connect('dictionary_key_options', '/dictionary/:job_center_id', controller=jobCenterController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
 
+    dispatcher.connect('dictionary_options', '/dictionary/', controller=jobCenterController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
+    dispatcher.connect('reset_key_options', '/reset/:job_center_id', controller=jobCenterController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
+
+    dispatcher.connect('reset_options', '/reset/', controller=jobCenterController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
+
+    dispatcher.connect('comments_options', '/comments/:job_center_id', controller=jobCenterController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
     conf = {
 	'global': {
             'server.thread_pool': 5, # optional argument
@@ -36,6 +53,7 @@ def start_service():
 	    },
 	'/': {
 	    'request.dispatch': dispatcher,
+        'tools.CORS.on':True,
 	    }
     }
 
@@ -47,5 +65,6 @@ def start_service():
 
 
 if __name__ == '__main__':
+    cherrypy.tools.CORS = cherrypy.Tool('before_finalize', CORS)
     start_service()
 
