@@ -61,11 +61,11 @@ function makeRequest(){
     }
 
     // actually make the network call
-    if(message_body != null) {
+   /* if(message_body != null) {
         xhr.send(message_body)
-    } else {
+    } else {*/
      xhr.send(null) // last step - this actually makes the request
-    }
+  //  }
    
 
 
