@@ -38,11 +38,12 @@ function makeRequest(){
     console.log('Beginning to make nw call' + name);
     // set up url
     var xhr = new XMLHttpRequest(); // 1 - creating request object
-    //var url = null;
+    var url = null;
+
     if(search_term != null){
-        var url = url_base + ':' + port + '/dictionary/' + search_term;   
+        url = url_base + ':' + port + '/dictionary/' + search_term;   
     } else {  
-        var url = url_base + ':' + port + '/dictionary/';
+        url = url_base + ':' + port + '/dictionary/';
     }
     
     xhr.open("GET", url, true); // 2 - associates request attributes with xhr
@@ -54,7 +55,7 @@ function makeRequest(){
         // do something
         updateResponse(xhr.responseText);
     }
-
+    console.log(url);
     // set up onerror
     xhr.onerror = function(e) { // triggered when error response is received and must be before send
         console.error(xhr.statusText);
