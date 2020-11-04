@@ -38,8 +38,8 @@ function makeRequest(){
     console.log('Beginning to make nw call' + name);
     // set up url
     var xhr = new XMLHttpRequest(); // 1 - creating request object
-    var url = null;
-    if(key != null){
+    //var url = null;
+    if(search_term != null){
         url = url_base + ':' + port + '/dictionary/' + search_term;   
     } else {  
         var url = url_base + ':' + port + '/dictionary/';
