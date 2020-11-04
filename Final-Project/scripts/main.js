@@ -7,7 +7,7 @@ send_button.onmouseup = makeRequest;
 function makeRequest(){
     console.log("Entered get Form Info!")
     // get text from title, author and story
-    const url_base = 'student04.cse.nd.edu';
+    const url_base = 'http://student04.cse.nd.edu';
     const port = '51086';
 
     var search_term = document.getElementById('text-field-1').value;
@@ -39,12 +39,13 @@ function makeRequest(){
     // set up url
     var xhr = new XMLHttpRequest(); // 1 - creating request object
     var url = null;
-    if(key != null){
+
+    if(search_term != null){
         url = url_base + ':' + port + '/dictionary/' + search_term;   
     } else {  
-        var url = url_base + ':' + port + '/dictionary/';
+        url = url_base + ':' + port + '/dictionary/';
     }
-    
+    var action = "GET"
     xhr.open(action, url, true); // 2 - associates request attributes with xhr
 
     // set up onload
@@ -54,18 +55,18 @@ function makeRequest(){
         // do something
         updateResponse(xhr.responseText);
     }
-
+    console.log(url);
     // set up onerror
     xhr.onerror = function(e) { // triggered when error response is received and must be before send
         console.error(xhr.statusText);
     }
 
     // actually make the network call
-    if(message_body != null) {
+   /* if(message_body != null) {
         xhr.send(message_body)
-    } else {
+    } else {*/
      xhr.send(null) // last step - this actually makes the request
-    }
+  //  }
    
 
 
