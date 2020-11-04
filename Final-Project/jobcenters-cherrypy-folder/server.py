@@ -37,18 +37,18 @@ def start_service():
     dispatcher.connect('comment_get', '/comments/:job_center_id', controller=commentsController, action = 'GET_KEY', conditions=dict(method=['GET']))
 
     # CORS related options connections
-    dispatcher.connect('dictionary_key_options', '/dictionary/:job_center_id', controller=jobCenterController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
+    dispatcher.connect('dictionary_key_options', '/dictionary/:job_center_id', controller=optionsController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
 
-    dispatcher.connect('dictionary_options', '/dictionary/', controller=jobCenterController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
-    dispatcher.connect('reset_key_options', '/reset/:job_center_id', controller=jobCenterController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
+    dispatcher.connect('dictionary_options', '/dictionary/', controller=optionsController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
+    dispatcher.connect('reset_key_options', '/reset/:job_center_id', controller=optionsController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
 
-    dispatcher.connect('reset_options', '/reset/', controller=jobCenterController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
+    dispatcher.connect('reset_options', '/reset/', controller=optionsController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
 
-    dispatcher.connect('comments_options', '/comments/:job_center_id', controller=jobCenterController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
+    dispatcher.connect('comments_options', '/comments/:job_center_id', controller=optionsController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
     conf = {
 	'global': {
             'server.thread_pool': 5, # optional argument
-			'server.socket_host': 'student00.cse.nd.edu', # Set to localhost to work everywhere
+			'server.socket_host': 'student04.cse.nd.edu', # Set to localhost to work everywhere
 	    'server.socket_port': 51086, #assigned port
 	    },
 	'/': {

@@ -44,6 +44,42 @@ class _job_center_database:
                 print(ex)
                 job_center = None
         return job_center
+        
+
+       def get_job_center_name(self, name):
+        try:
+                for i, jcname in self.job_center_names.items():
+                    if jcname.lower() == name.lower():
+                        borough = self.boroughs[i]
+                        address = self.addresses[i]
+                        phone_number = self.phone_numbers[i]
+                        comments = self.comments[i]
+                        job_center = list((jcname, borough, address, phone_number, comments))
+                        break
+        except Exception as ex:
+            print(ex)
+            job_center = None
+        return job_center
+        
+
+       def get_job_centers_borough(self, input_borough):
+        ans = []
+        try:
+               for i, borough in self.boroughs.items():
+                   
+                   if borough.lower() == input_borough.lower():
+                       jcname = self.job_center_names[i]
+                       address = self.addresses[i]
+                       phone_number = self.phone_numbers[i]
+                       comments = self.comments[i]
+                       job_center = list((jcname, borough, address, phone_number, comments))
+                       ans.append(job_center)
+
+        except Exception as ex:
+               print(ex)
+               ans = None
+        return ans
+        
 
        def set_job_center(self, jcid, job_center):
         self.job_center_names[jcid] = job_center[0]

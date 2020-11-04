@@ -15,11 +15,29 @@ class JobCenterController(object):
         def GET_KEY(self, job_center_id):
                 '''when GET request for /dictionary/job_center_id comes in, then we respond with json string'''
                 output = {'result':'success'}
-                job_center_id = int(job_center_id)
-
-
+                print(job_center_id)
+                print(type(job_center_id))
+                if job_center_id[0].isdigit():
+                    job_center_id_int = int(job_center_id)
+                    job_center = self.jcdb.get_job_center(job_center_id_int)
+                elif job_center_id.lower() in {'bronx', 'manhattan', 'brooklyn', 'queens', 'staten island'}: # borough or id
+                    print("hey")
+                    job_centers = self.jcdb.get_job_centers_borough(job_center_id)  
+                    output['arr'] = []
+                    for i, jc in enumerate(job_centers):
+                        jc_item = {}
+                        jc_item['name'] = jc[0]
+                        jc_item['borough'] = jc[1]
+                        jc_item['address'] = jc[2]
+                        jc_item['phone_number'] = jc[3]
+                        jc_item['comments'] = jc[4]
+                        output['arr'].append(jc_item)
+                    return json.dumps(output)
+                else: # search by name
+                    print("search by name")
+                    job_center = self.jcdb.get_job_center_name(job_center_id)
                 try:
-                        job_center = self.jcdb.get_job_center(job_center_id)
+                        
                         if job_center is not None:
                                 output['id'] = job_center_id
                                 output['name'] = job_center[0]
