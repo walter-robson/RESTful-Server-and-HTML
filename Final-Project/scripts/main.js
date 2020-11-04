@@ -45,7 +45,7 @@ function makeRequest(){
         var url = url_base + ':' + port + '/dictionary/';
     }
     
-    xhr.open(action, url, true); // 2 - associates request attributes with xhr
+    xhr.open("GET", url, true); // 2 - associates request attributes with xhr
 
     // set up onload
     xhr.onload = function(e) { // triggered when response is received
