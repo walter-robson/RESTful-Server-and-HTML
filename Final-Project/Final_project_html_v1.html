@@ -27,65 +27,65 @@
       </a>
    </p>
 </div>
-
-<div class="form-group">
-   <label for="radios">Borough or Name</label>
-   <div class="radio">
-      <label>
-         <input type="radio" name="bsr-radios" id="radio-name" checked="checked">
-         Name
-      </label>
+<div class="container">
+   <div class="form-group">
+      <label for="radios">Borough or Name</label>
+      <div class="radio">
+         <label>
+            <input type="radio" name="bsr-radios" id="radio-name" checked="checked">
+            Name
+         </label>
+      </div>
+      <div class="radio">
+         <label>
+            <input type="radio" name="bsr-radios" id="radio-borough">
+            Borough
+         </label>
+      </div>
    </div>
-   <div class="radio">
-      <label>
-         <input type="radio" name="bsr-radios" id="radio-borough">
-         Borough
-      </label>
+
+   <div class="form-group">
+   <label for="text-field-1">Search by Name or Borough</label>
+   <input name="text-field-1" type="text" class="form-control" id="text-field-1" placeholder="input text here">
    </div>
-</div>
 
-<div class="form-group">
- <label for="text-field-1">Search by Name or Borough</label>
- <input name="text-field-1" type="text" class="form-control" id="text-field-1" placeholder="input text here">
-</div>
+   <button type="submit" id="submit-button" class="btn btn-primary push-down-2">Search</button>
 
-<button type="submit" id="submit-button" class="btn btn-primary push-down-2">Search</button>
-
-<div class="form-group">
- <label for="text-field-2">Add New Job Center</label>
- <input name="text-field-2" type="text" class="form-control" id="new-name" placeholder="input name here">
- <input name="text-field-2" type="text" class="form-control" id="new-address" placeholder="input address here">
- <input name="text-field-2" type="text" class="form-control" id="new-phone" placeholder="input phone number here">
-</div>
-
-<button type="submit" id="new-submit-button" class="btn btn-primary push-down-2">Post</button>
-
-<div class="form-group">
- <label for="text-field-3">Add a comment for a job center</label>
- <input name="text-field-3" type="text" class="form-control" id="comment-name" placeholder="input job center name here">
- <input name="text-field-3" type="text" class="form-control" id="comment-text" placeholder="input job center comment">
-</div>
-
-<button type="submit" id="comment-button" class="btn btn-primary push-down-2">Comment</button>
-<!-- wrapper div.container -->
-
-<!-- jQuery Javascript Library (required by Bootstrap) -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-<!-- Bootstrap JS -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-
-<div class="media">
-   <div name="results" class="media-body">
-      <h5 class="media-heading">Results</h5>
-      <div>
-         <label id="answer-label">-</label>
-      </div>      
+   <div class="form-group">
+   <label for="text-field-2">Add New Job Center</label>
+   <input name="text-field-2" type="text" class="form-control" id="new-name" placeholder="input name here">
+   <input name="text-field-2" type="text" class="form-control" id="new-address" placeholder="input address here">
+   <input name="text-field-2" type="text" class="form-control" id="new-phone" placeholder="input phone number here">
    </div>
+
+   <button type="submit" id="new-submit-button" class="btn btn-primary push-down-2">Post</button>
+
+   <div class="form-group">
+   <label for="text-field-3">Add a comment for a job center</label>
+   <input name="text-field-3" type="text" class="form-control" id="comment-name" placeholder="input job center name here">
+   <input name="text-field-3" type="text" class="form-control" id="comment-text" placeholder="input job center comment">
+   </div>
+
+   <button type="submit" id="comment-button" class="btn btn-primary push-down-2">Comment</button>
+   <!-- wrapper div.container -->
+
+   <!-- jQuery Javascript Library (required by Bootstrap) -->
+   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+   <!-- Bootstrap JS -->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+   <div class="media">
+      <div name="results" class="media-body">
+         <h5 class="media-heading">Results</h5>
+         <div>
+            <label id="answer-label">-</label>
+         </div>      
+      </div>
+   </div>
+
 </div>
-
-
 
 
 <script src="scripts/main.js"></script>
