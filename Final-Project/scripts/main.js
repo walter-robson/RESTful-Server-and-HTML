@@ -7,7 +7,7 @@ send_button.onmouseup = makeRequest;
 function makeRequest(){
     console.log("Entered get Form Info!")
     // get text from title, author and story
-    const url_base = 'student04.cse.nd.edu';
+    const url_base = 'http://student04.cse.nd.edu';
     const port = '51086';
 
     var search_term = document.getElementById('text-field-1').value;
