@@ -29,7 +29,23 @@
 </div>
 
 <div class="form-group">
- <label for="text-field-1">Name, Zipcode, or Borough</label>
+   <label for="radios">Borough or Name</label>
+   <div class="radio">
+      <label>
+         <input type="radio" name="bsr-radios" id="radio-name" checked="checked">
+         Name
+      </label>
+   </div>
+   <div class="radio">
+      <label>
+         <input type="radio" name="bsr-radios" id="radio-borough">
+         Borough
+      </label>
+   </div>
+</div>
+
+<div class="form-group">
+ <label for="text-field-1">Search by Name or Borough</label>
  <input name="text-field-1" type="text" class="form-control" id="text-field-1" placeholder="input text here">
 </div>
 
