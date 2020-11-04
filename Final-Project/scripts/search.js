@@ -5,7 +5,7 @@ send_button = document.getElementById("submit-button");
 send_button.onmouseup = makeRequest;
 
 function makeRequest(){
-    console.log("Entered get Form Info!")
+    console.log("Entered Search!")
     // get text from title, author and story
     const url_base = 'http://student04.cse.nd.edu';
     const port = '51086';
@@ -68,13 +68,10 @@ function makeRequest(){
      xhr.send(null) // last step - this actually makes the request
   //  }
    
-
-
 };
 
 function updateResponse(response){
         
-
         var response_json = JSON.parse(response);
 
         var answer_label = document.getElementById('answer-label');
