@@ -40,7 +40,7 @@ function makeRequest(){
     var xhr = new XMLHttpRequest(); // 1 - creating request object
     //var url = null;
     if(search_term != null){
-        url = url_base + ':' + port + '/dictionary/' + search_term;   
+        var url = url_base + ':' + port + '/dictionary/' + search_term;   
     } else {  
         var url = url_base + ':' + port + '/dictionary/';
     }
