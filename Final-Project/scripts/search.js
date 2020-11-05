@@ -107,7 +107,7 @@ function updateResponseList(response){
             if(response_json['output'] === 'error'){
             answer_label.innerHTML = "ERROR"
             } else {
-            ss += response_json['arr'][i]['name'] + " is located at " + response_json['arr'][i]['address'] + " and can be reached at " + response_json['arr'][i]['phone_number'] + " " + response_json['arr'][i]['comments'] + '<br>';
+            ss += response_json['arr'][i]['name'] + " is located at " + response_json['arr'][i]['address'] + " and can be reached at " + response_json['arr'][i]['phone_number'] + " " + response_json['arr'][i]['comments'] + '<br><br><br>';
             }
             
         }
