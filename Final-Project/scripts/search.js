@@ -99,17 +99,14 @@ function updateResponseList(response){
         
         var response_json = JSON.parse(response);
         for(var i = 0; i < response['arr'].length; i++){
+            
+            console.log(response['arr']);
             var answer_label = document.getElementById('answer-label');
             if(response_json['output'] === 'error'){
             answer_label.innerHTML = "ERROR"
             } else {
-            answer_label.innerHTML = response_json['arr'][i]['name'] + " is located at " + response_json['arr'][i]['address'] + " and can be reached at " + response_json['arr'][i]['phone_number'];
+            answer_label.innerHTML = response_json['arr'][i]['name'] + " is located at " + response_json['arr'][i]['address'] + " and can be reached at " + response_json['arr'][i]['phone_number'] + ' ' + response_json['arr'][i]['comments'];
             }
-            var comment_label = document.getElementById('comment-label');
-            if(response_json['output'] === 'error'){
-            comment_label.innerHTML = "ERROR"
-            } else {
-            comment_label.innerHTML = response_json['arr'][i]['comments'] ;
-            }
+            
         }
 };
