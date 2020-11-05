@@ -24,7 +24,7 @@ function makeRequest(){
         // must be written before send
         console.log(xhr.responseText);
         // do something
-        updateResponse(xhr.responseText);
+        updateResponse4(xhr.responseText);
     }
     console.log(url);
     // set up onerror
@@ -35,7 +35,7 @@ function makeRequest(){
 
 };
 
-function updateResponse(response){
+function updateResponse4(response){
         
         var response_json = JSON.parse(response);
 
