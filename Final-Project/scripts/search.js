@@ -80,19 +80,11 @@ function updateResponse(response){
         } else {
         answer_label.innerHTML = response_json['name'] + " is located at " + response_json['address'] + " and can be reached at " + response_json['phone_number'];
         }
-        updateComments(response_json['comments'])
-};
-
-function updateComments(response){
-        
-        var response_json = JSON.parse(response);
-
-        var answer_label = document.getElementById('comment-label');
+        var comment_label = document.getElementById('comment-label');
         if(response_json['output'] === 'error'){
-        answer_label.innerHTML = "ERROR"
+        comment_label.innerHTML = "ERROR"
         } else {
-        answer_label.innerHTML = response ;
-        }
-
+        comment_label.innerHTML = response_json['comments'] ;
 };
+
 
