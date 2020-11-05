@@ -2,9 +2,9 @@
 console.log("Page load happened!")
 
 send_button = document.getElementById("submit-button");
-send_button.onmouseup = makeRequest;
+send_button.onmouseup = makeRequest4;
 
-function makeRequest(){
+function makeRequest4(){
     console.log("Entered Search!")
     // get text from title, author and story
     const url_base = 'http://student04.cse.nd.edu';
