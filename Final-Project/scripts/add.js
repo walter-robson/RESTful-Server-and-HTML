@@ -63,7 +63,7 @@ function makeRequest1(){
         console.error(xhr.statusText);
     }
 
-    var message_body = "{'name': '" + name + "', 'borough': '" + borough + "', 'address': '" + address + "', 'phone_number': '" + phone + "', 'comments': '" + comments + "'}";
+    var message_body = "{\"name\": \"" + name + "\", \"borough\": \"" + borough + "\", \"address\": \"" + address + "\", \"phone_number\": \"" + phone + "\", \"comments\": \"" + comments + "\"}";
     console.log(message_body);
     xhr.send(message_body) // #TODO: fix message body to actually post the correct stuff
     
