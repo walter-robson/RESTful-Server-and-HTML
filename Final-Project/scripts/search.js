@@ -98,7 +98,8 @@ function updateResponse(response){
 function updateResponseList(response){
         
         var response_json = JSON.parse(response);
-        console.log(response_json)
+        console.log(response_json);
+        var ss = "";
         for(var i = 0; i < response_json['arr'].length; i++){
             
             console.log(response_json['arr']);
@@ -106,8 +107,9 @@ function updateResponseList(response){
             if(response_json['output'] === 'error'){
             answer_label.innerHTML = "ERROR"
             } else {
-            answer_label.innerHTML = response_json['arr'][i]['name'] + " is located at " + response_json['arr'][i]['address'] + " and can be reached at " + response_json['arr'][i]['phone_number'] + ' ' + response_json['arr'][i]['comments'];
+            ss += response_json['arr'][i]['name'] + " is located at " + response_json['arr'][i]['address'] + " and can be reached at " + response_json['arr'][i]['phone_number'] + ' ' + response_json['arr'][i]['comments'];
             }
             
         }
+        answer_label.innerHTML = ss;
 };
