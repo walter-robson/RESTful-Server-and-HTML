@@ -43,6 +43,22 @@ function updateResponse4(response){
         if(response_json['output'] === 'error'){
         answer_label.innerHTML = "ERROR"
         } else {
-        answer_label.innerHTML = response_json['result'] ;
+        
+        
+        var ss = "";
+        for(var i = 0; i < response_json['job_centers'].length; i++){
+            
+            console.log(response_json['job_centers']);
+            var answer_label = document.getElementById('answer-label');
+            if(response_json['output'] === 'error'){
+            answer_label.innerHTML = "ERROR"
+            } else {
+            ss += response_json['job_centers'][i]['name'] + " is located at " + response_json['job_centers'][i]['address'] + " and can be reached at " + response_json['job_centers'][i]['phone_number'] + " " + response_json['job_centers'][i]['comments'] + '<br><br><br>';
+            }
+            
         }
+        answer_label.innerHTML = ss;
+
+        }
+
 };
