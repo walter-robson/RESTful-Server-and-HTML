@@ -31,7 +31,7 @@ function makeRequest3(){
     xhr.onerror = function(e) { // triggered when error response is received and must be before send
         console.error(xhr.statusText);
     }
-     xhr.send("") // last step - this actually makes the request
+     xhr.send('') // last step - this actually makes the request
 
 };
 function updateResponse5(response){
