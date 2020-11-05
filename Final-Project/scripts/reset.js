@@ -14,9 +14,9 @@ function makeRequest3(){
     var xhr = new XMLHttpRequest(); // 1 - creating request object
     var url = null;
 
-    url = url_base + ':' + port + '/reset/';
+    url = url_base + ':' + port + '/dictionary/';
    
-    var action = "PUT"
+    var action = "GET"
     xhr.open(action, url, true); // 2 - associates request attributes with xhr
 
     // set up onload
