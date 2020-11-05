@@ -74,9 +74,9 @@ function makeRequest1(){
 };
 
 function updateResponse3(response){
-        
+        console.log(response);
         var response_json = JSON.parse(response);
-
+        
         var answer_label = document.getElementById('answer-label');
         if(response_json['output'] === 'error'){
         answer_label.innerHTML = "ERROR"
