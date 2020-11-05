@@ -79,6 +79,6 @@ function updateResponse3(response){
         if(response_json['output'] === 'error'){
         answer_label.innerHTML = "ERROR"
         } else {
-        answer_label.innerHTML = response_json['name'] + " is located at " + response_json['address'] + " and can be reached at " + response_json['phone_number'] + '\n' + response_json['comments'];
+        answer_label.innerHTML = response_json['result'] ;
         }
 };
