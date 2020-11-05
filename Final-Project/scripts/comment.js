@@ -109,7 +109,7 @@ function updateComments(response){
         if(response_json['output'] === 'error'){
         answer_label.innerHTML = "ERROR"
         } else {
-        answer_label.innerHTML = response_json['comment'] ;
+        answer_label.innerHTML = response_json['comments'] ;
         }
 
 };
