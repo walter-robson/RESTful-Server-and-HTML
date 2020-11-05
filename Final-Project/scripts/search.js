@@ -85,6 +85,7 @@ function updateResponse(response){
         comment_label.innerHTML = "ERROR"
         } else {
         comment_label.innerHTML = response_json['comments'] ;
+        }
 };
 
 
