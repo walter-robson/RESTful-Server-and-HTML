@@ -35,7 +35,7 @@ function makeRequest(){
             action = "DELETE";
     }
 */
-    console.log('Beginning to make nw call' + name);
+    console.log('Beginning to make nw call');
     // set up url
     var xhr = new XMLHttpRequest(); // 1 - creating request object
     var url = null;
