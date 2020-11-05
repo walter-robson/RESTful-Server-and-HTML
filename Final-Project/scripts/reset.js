@@ -1,9 +1,9 @@
 console.log("Page load happened!")
 
 send_button = document.getElementById("reset-button");
-send_button.onmouseup = makeRequest;
+send_button.onmouseup = makeRequest3;
 
-function makeRequest(){
+function makeRequest3(){
     console.log("Entered Reset")
     // get text from title, author and story
     const url_base = 'http://student04.cse.nd.edu';
