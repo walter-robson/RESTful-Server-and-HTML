@@ -98,6 +98,7 @@ function updateResponse(response){
 function updateResponseList(response){
         
         var response_json = JSON.parse(response);
+        console.log(response_json)
         for(var i = 0; i < response_json['arr'].length; i++){
             
             console.log(response_json['arr']);
