@@ -69,7 +69,7 @@ function makeRequest(){
   //  }
   var name = document.getElementById('radio-name').checked
   if(name){
-   makeCommentRequest(name);
+   updateComments(name);
   }
 };
 
