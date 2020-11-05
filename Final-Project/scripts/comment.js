@@ -31,7 +31,7 @@ function makeRequest(){
         // must be written before send
         console.log(xhr.responseText);
         // do something
-        updateResponse(xhr.responseText);
+        updateResponse1(xhr.responseText);
     }
     console.log(url);
     // set up onerror
@@ -48,7 +48,7 @@ function makeRequest(){
    makeCommentRequest(name);
 };
 
-function updateResponse(response){
+function updateResponse1(response){
         
         var response_json = JSON.parse(response);
 
