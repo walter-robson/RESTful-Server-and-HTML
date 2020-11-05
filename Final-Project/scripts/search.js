@@ -98,9 +98,9 @@ function updateResponse(response){
 function updateResponseList(response){
         
         var response_json = JSON.parse(response);
-        for(var i = 0; i < response['arr'].length; i++){
+        for(var i = 0; i < response_json['arr'].length; i++){
             
-            console.log(response['arr']);
+            console.log(response_json['arr']);
             var answer_label = document.getElementById('answer-label');
             if(response_json['output'] === 'error'){
             answer_label.innerHTML = "ERROR"
