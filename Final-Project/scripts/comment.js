@@ -85,7 +85,7 @@ function makeCommentRequest(name){
         // must be written before send
         console.log(xhr.responseText);
         // do something
-        updateComments(xhr.responseText);
+        updateComments1(xhr.responseText);
     }
     console.log(url);
     // set up onerror
@@ -101,7 +101,7 @@ function makeCommentRequest(name){
   //  }
    
 };
-function updateComments(response){
+function updateComments1(response){
         
         var response_json = JSON.parse(response);
 
