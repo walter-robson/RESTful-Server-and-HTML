@@ -53,7 +53,14 @@ function makeRequest4(){
         // must be written before send
         console.log(xhr.responseText);
         // do something
-        updateResponse(xhr.responseText);
+        var name = document.getElementById("radio-name");
+        var borough = document.getElementById("radio-borough");
+        if (name){
+            updateResponse(xhr.responseText);
+        } 
+        if (borough){
+            updateResponseList(xhr.responseText);
+        }
     }
     console.log(url);
     // set up onerror
@@ -88,4 +95,21 @@ function updateResponse(response){
         }
 };
 
-
+function updateResponseList(response){
+        
+        var response_json = JSON.parse(response);
+        for(var i = 0; i < response['arr'].length; i++){
+            var answer_label = document.getElementById('answer-label');
+            if(response_json['output'] === 'error'){
+            answer_label.innerHTML = "ERROR"
+            } else {
+            answer_label.innerHTML = response_json['arr'][i]['name'] + " is located at " + response_json['arr'][i]['address'] + " and can be reached at " + response_json['arr'][i]['phone_number'];
+            }
+            var comment_label = document.getElementById('comment-label');
+            if(response_json['output'] === 'error'){
+            comment_label.innerHTML = "ERROR"
+            } else {
+            comment_label.innerHTML = response_json['arr'][i]['comments'] ;
+            }
+        }
+};
