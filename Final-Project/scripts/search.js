@@ -67,7 +67,8 @@ function makeRequest(){
     } else {*/
      xhr.send(null) // last step - this actually makes the request
   //  }
-   
+  if()
+   makeCommentRequest(name);
 };
 
 function updateResponse(response){
@@ -80,4 +81,19 @@ function updateResponse(response){
         } else {
         answer_label.innerHTML = response_json['name'] + " is located at " + response_json['address'] + " and can be reached at " + response_json['phone_number'] + '\n' + response_json['comments'];
         }
+        updateComments(response_json['comments'])
 };
+
+function updateComments(response){
+        
+        var response_json = JSON.parse(response);
+
+        var answer_label = document.getElementById('comment-label');
+        if(response_json['output'] === 'error'){
+        answer_label.innerHTML = "ERROR"
+        } else {
+        answer_label.innerHTML = response ;
+        }
+
+};
+
