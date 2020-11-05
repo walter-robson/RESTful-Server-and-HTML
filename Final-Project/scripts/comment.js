@@ -61,7 +61,7 @@ function updateResponse1(response){
 
 };
 function makeCommentRequest(name){
-    console.log("Entered Comments!")
+    console.log("Entered Comments REQUEST SOMETHING WENT WRONG?!")
     // get text from title, author and story
     const url_base = 'http://student04.cse.nd.edu';
     const port = '51086';
