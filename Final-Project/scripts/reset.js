@@ -1,15 +1,14 @@
 console.log("Page load happened!")
 
-send_button = document.getElementById("submit-button");
+send_button = document.getElementById("reset-button");
 send_button.onmouseup = makeRequest;
 
 function makeRequest(){
-    console.log("Entered Search!")
+    console.log("Entered Reset")
     // get text from title, author and story
     const url_base = 'http://student04.cse.nd.edu';
     const port = '51086';
 
-    var search_term = document.getElementById('text-field-1').value;
     console.log('Beginning to make nw call' + name);
     // set up url
     var xhr = new XMLHttpRequest(); // 1 - creating request object
