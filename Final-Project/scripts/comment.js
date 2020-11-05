@@ -2,9 +2,9 @@
 console.log("Page load happened!")
 
 send_button = document.getElementById('comment-button');
-send_button.onmouseup = makeRequest;
+send_button.onmouseup = makeRequest2;
 
-function makeRequest(){
+function makeRequest2(){
     console.log("Entered Comments!")
     // get text from title, author and story
     const url_base = 'http://student04.cse.nd.edu';
