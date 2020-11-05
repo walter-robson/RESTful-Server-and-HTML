@@ -67,10 +67,7 @@ function makeRequest4(){
     } else {*/
      xhr.send(null) // last step - this actually makes the request
   //  }
-  var name = document.getElementById('radio-name').checked
-  if(name){
-   updateComments(name);
-  }
+  
 };
 
 function updateResponse(response){
