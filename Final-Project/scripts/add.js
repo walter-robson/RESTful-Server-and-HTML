@@ -13,6 +13,8 @@ function makeRequest1(){
     var name = document.getElementById('new-name').value;
     var address = document.getElementById('new-address').value;
     var phone = document.getElementById('new-phone').value;
+    var borough = document.getElementById('new-borough').value;
+    var comments = document.getElementById('new-comments').value;
     /*
     var key = null;
     if (document.getElementById('checkbox-use-key').checked){
@@ -42,12 +44,10 @@ function makeRequest1(){
     var xhr = new XMLHttpRequest(); // 1 - creating request object
     var url = null;
 
-    if(name != null){
-        url = url_base + ':' + port + '/dictionary/' + name;   
-    } else {  
-        url = url_base + ':' + port + '/dictionary/';
-    }
-    var action = "POST"
+    
+    url = url_base + ':' + port + '/dictionary/';
+    
+    var action = "POST";
     xhr.open(action, url, true); // 2 - associates request attributes with xhr
 
     // set up onload
@@ -63,13 +63,11 @@ function makeRequest1(){
         console.error(xhr.statusText);
     }
 
-    // actually make the network call
-   /* if(message_body != null) {
-        xhr.send(message_body)
-    } else {*/
-     xhr.send(null) // #TODO: fix message body to actually post the correct stuff
+    var message_body = "{'name': '" + name + "', 'borough': '" + borough + "', 'address': '" + address + "', 'phone_number': '" + phone + "', 'comments': '" + comments + "'}";
+    console.log(message_body);
+    xhr.send(message_body) // #TODO: fix message body to actually post the correct stuff
     
-  //  }
+
    
 };
 
