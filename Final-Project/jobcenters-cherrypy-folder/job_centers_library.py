@@ -24,7 +24,10 @@ class _job_center_database:
                 self.job_center_names[job_center_id] = jcname
                 self.addresses[job_center_id] = address
                 self.phone_numbers[job_center_id] = phone_number
-                self.comments[job_center_id] = [comment]
+                if comment == "":
+                    self.comments[job_center_id] = []
+                else:
+                    self.comments[job_center_id] = [comment]
         f.close()
 
        def get_job_centers(self):
@@ -47,6 +50,7 @@ class _job_center_database:
         
 
        def get_job_center_name(self, name):
+        print(self.comments)
         try:
                 for i, jcname in self.job_center_names.items():
                     if jcname.lower() == name.lower():
@@ -100,8 +104,13 @@ class _job_center_database:
        def get_comments(self, jcid): #Need to update this to handle strings not numbers
         return (self.comments[jcid])
 
-       def set_comment(self, jcid, comment):
-             self.job_center_comments[jcid].append(comment)
+       def set_comment(self, name, comment):
+             #print(comment)
+             for jcid, name_db in self.job_center_names.items():
+                 if name.lower() == name_db.lower():      
+                    self.comments[jcid].append(comment)
+                    break
+
 
    
        def delete_all_comments(self):

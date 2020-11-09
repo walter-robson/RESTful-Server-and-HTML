@@ -35,6 +35,7 @@ def start_service():
     dispatcher.connect('reset_index_put', '/reset/', controller=resetController, action = 'PUT_INDEX', conditions=dict(method=['PUT']))
 
     dispatcher.connect('comment_get', '/comments/:job_center_id', controller=commentsController, action = 'GET_KEY', conditions=dict(method=['GET']))
+    dispatcher.connect('comment_put', '/comments/:job_center_id', controller=commentsController, action = 'PUT_KEY', conditions=dict(method=['PUT']))
 
     # CORS related options connections
     dispatcher.connect('dictionary_key_options', '/dictionary/:job_center_id', controller=optionsController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))

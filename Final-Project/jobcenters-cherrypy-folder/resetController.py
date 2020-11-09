@@ -15,7 +15,7 @@ class ResetController(object):
         '''when PUT request comes in to /reset/ endpoint, then the movie database is reloaded'''
         output = {'result':'success'}
 
-        data = json.loads(cherrypy.request.body.read().decode())
+        #data = json.loads(cherrypy.request.body.read().decode())
 
         self.jcdb.__init__()
         self.jcdb.load_job_centers('Directory_Of_Job_Centers.csv')
