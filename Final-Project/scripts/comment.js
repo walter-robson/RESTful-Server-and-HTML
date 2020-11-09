@@ -13,7 +13,7 @@ function makeRequest2(){
     var name = document.getElementById('comment-name').value;
     var comment = document.getElementById('comment-text')
     console.log('Beginning to make nw call');
-    var message_body = '{\"comment\": \"' + comment + '\"}'
+    var message_body = '\"{\"comment\": \"' + comment + '\"}\"'
     // set up url
     var xhr = new XMLHttpRequest(); // 1 - creating request object
     var url = null;
