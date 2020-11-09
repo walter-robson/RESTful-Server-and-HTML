@@ -38,7 +38,7 @@ function makeRequest2(){
     xhr.onerror = function(e) { // triggered when error response is received and must be before send
         console.error(xhr.statusText);
     }
-
+    console.log(message_body)
     // actually make the network call
    /* if(message_body != null) {
         xhr.send(message_body)
