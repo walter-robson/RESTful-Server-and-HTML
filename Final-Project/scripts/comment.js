@@ -2,18 +2,18 @@
 console.log("Page load happened!")
 
 send_button = document.getElementById('comment-button');
-send_button.onmouseup = makeRequest;
+send_button.onmouseup = makeRequest2;
 
-function makeRequest(){
+function makeRequest2(){
     console.log("Entered Comments!")
     // get text from title, author and story
     const url_base = 'http://student04.cse.nd.edu';
     const port = '51086';
 
     var name = document.getElementById('comment-name').value;
-    var comment = document.getElementById('comment-text')
-    console.log('Beginning to make nw call' + name);
-    var message_body = "{'comment': '" + comment + "'}"
+    var comment = document.getElementById('comment-text').value;
+    console.log('Beginning to make nw call');
+    var message_body = '{\"comment\": \"' + comment + '\"}'
     // set up url
     var xhr = new XMLHttpRequest(); // 1 - creating request object
     var url = null;
@@ -21,7 +21,7 @@ function makeRequest(){
     if(name != null){
         url = url_base + ':' + port + '/comments/' + name;   
     } else {  
-        updateResponse("{'result': 'error'}");
+        updateResponse("{\"result\": \"error\"}");
     }
     var action = "PUT"
     xhr.open(action, url, true); // 2 - associates request attributes with xhr
@@ -31,14 +31,14 @@ function makeRequest(){
         // must be written before send
         console.log(xhr.responseText);
         // do something
-        updateResponse(xhr.responseText);
+        updateResponse1(xhr.responseText);
     }
     console.log(url);
     // set up onerror
     xhr.onerror = function(e) { // triggered when error response is received and must be before send
         console.error(xhr.statusText);
     }
-
+    console.log(message_body)
     // actually make the network call
    /* if(message_body != null) {
         xhr.send(message_body)
@@ -48,20 +48,20 @@ function makeRequest(){
    makeCommentRequest(name);
 };
 
-function updateResponse(response){
+function updateResponse1(response){
         
         var response_json = JSON.parse(response);
 
         var answer_label = document.getElementById('comment-label');
-        if(response_json['output'] === 'error'){
+        if(response_json["output"] === "error"){
         answer_label.innerHTML = "ERROR"
         } else {
-        answer_label.innerHTML = response_json['result'] ;
+        answer_label.innerHTML = response_json["result"] ;
         }
 
 };
 function makeCommentRequest(name){
-    console.log("Entered Comments!")
+    console.log("Entered Comments REQUEST SOMETHING WENT WRONG?!")
     // get text from title, author and story
     const url_base = 'http://student04.cse.nd.edu';
     const port = '51086';
@@ -85,7 +85,7 @@ function makeCommentRequest(name){
         // must be written before send
         console.log(xhr.responseText);
         // do something
-        updateComments(xhr.responseText);
+        updateComments1(xhr.responseText);
     }
     console.log(url);
     // set up onerror
@@ -101,7 +101,7 @@ function makeCommentRequest(name){
   //  }
    
 };
-function updateComments(response){
+function updateComments1(response){
         
         var response_json = JSON.parse(response);
 
@@ -109,7 +109,7 @@ function updateComments(response){
         if(response_json['output'] === 'error'){
         answer_label.innerHTML = "ERROR"
         } else {
-        answer_label.innerHTML = response_json['comment'] ;
+        answer_label.innerHTML = response_json['comments'] ;
         }
 
 };

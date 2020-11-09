@@ -2,9 +2,9 @@
 console.log("Page load happened!")
 
 send_button = document.getElementById("new-submit-button");
-send_button.onmouseup = makeRequest;
+send_button.onmouseup = makeRequest1;
 
-function makeRequest(){
+function makeRequest1(){
     console.log("Entered Add!")
     // get text from title, author and story
     const url_base = 'http://student04.cse.nd.edu';
@@ -13,6 +13,8 @@ function makeRequest(){
     var name = document.getElementById('new-name').value;
     var address = document.getElementById('new-address').value;
     var phone = document.getElementById('new-phone').value;
+    var borough = document.getElementById('new-borough').value;
+    var comments = document.getElementById('new-comments').value;
     /*
     var key = null;
     if (document.getElementById('checkbox-use-key').checked){
@@ -42,12 +44,10 @@ function makeRequest(){
     var xhr = new XMLHttpRequest(); // 1 - creating request object
     var url = null;
 
-    if(name != null){
-        url = url_base + ':' + port + '/dictionary/' + name;   
-    } else {  
-        url = url_base + ':' + port + '/dictionary/';
-    }
-    var action = "POST"
+    
+    url = url_base + ':' + port + '/dictionary/';
+    
+    var action = "POST";
     xhr.open(action, url, true); // 2 - associates request attributes with xhr
 
     // set up onload
@@ -55,7 +55,7 @@ function makeRequest(){
         // must be written before send
         console.log(xhr.responseText);
         // do something
-        updateResponse(xhr.responseText);
+        updateResponse3(xhr.responseText);
     }
     console.log(url);
     // set up onerror
@@ -63,24 +63,22 @@ function makeRequest(){
         console.error(xhr.statusText);
     }
 
-    // actually make the network call
-   /* if(message_body != null) {
-        xhr.send(message_body)
-    } else {*/
-     xhr.send(null) // #TODO: fix message body to actually post the correct stuff
+    var message_body = "{\"name\": \"" + name + "\", \"borough\": \"" + borough + "\", \"address\": \"" + address + "\", \"phone_number\": \"" + phone + "\", \"comments\": \"" + comments + "\"}";
+    console.log(message_body);
+    xhr.send(message_body) // #TODO: fix message body to actually post the correct stuff
     
-  //  }
+
    
 };
 
-function updateResponse(response){
-        
+function updateResponse3(response){
+        console.log(response);
         var response_json = JSON.parse(response);
-
+        
         var answer_label = document.getElementById('answer-label');
         if(response_json['output'] === 'error'){
         answer_label.innerHTML = "ERROR"
         } else {
-        answer_label.innerHTML = response_json['name'] + " is located at " + response_json['address'] + " and can be reached at " + response_json['phone_number'] + '\n' + response_json['comments'];
+        answer_label.innerHTML = response_json['result'] ;
         }
 };

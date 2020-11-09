@@ -2,9 +2,9 @@
 console.log("Page load happened!")
 
 send_button = document.getElementById("submit-button");
-send_button.onmouseup = makeRequest;
+send_button.onmouseup = makeRequest4;
 
-function makeRequest(){
+function makeRequest4(){
     console.log("Entered Search!")
     // get text from title, author and story
     const url_base = 'http://student04.cse.nd.edu';
@@ -35,7 +35,7 @@ function makeRequest(){
             action = "DELETE";
     }
 */
-    console.log('Beginning to make nw call' + name);
+    console.log('Beginning to make nw call');
     // set up url
     var xhr = new XMLHttpRequest(); // 1 - creating request object
     var url = null;
@@ -53,7 +53,14 @@ function makeRequest(){
         // must be written before send
         console.log(xhr.responseText);
         // do something
-        updateResponse(xhr.responseText);
+        var name = document.getElementById("radio-name");
+        var borough = document.getElementById("radio-borough");
+        if (name){
+            updateResponse(xhr.responseText);
+        } 
+        if (borough){
+            updateResponseList(xhr.responseText);
+        }
     }
     console.log(url);
     // set up onerror
@@ -67,8 +74,7 @@ function makeRequest(){
     } else {*/
      xhr.send(null) // last step - this actually makes the request
   //  }
-  if()
-   makeCommentRequest(name);
+  
 };
 
 function updateResponse(response){
@@ -79,21 +85,31 @@ function updateResponse(response){
         if(response_json['output'] === 'error'){
         answer_label.innerHTML = "ERROR"
         } else {
-        answer_label.innerHTML = response_json['name'] + " is located at " + response_json['address'] + " and can be reached at " + response_json['phone_number'] + '\n' + response_json['comments'];
+        answer_label.innerHTML = response_json['name'] + " is located at " + response_json['address'] + " and can be reached at " + response_json['phone_number'];
         }
-        updateComments(response_json['comments'])
+        var comment_label = document.getElementById('comment-label');
+        if(response_json['output'] === 'error'){
+        comment_label.innerHTML = "ERROR"
+        } else {
+        comment_label.innerHTML = response_json['comments'] ;
+        }
 };
 
-function updateComments(response){
+function updateResponseList(response){
         
         var response_json = JSON.parse(response);
-
-        var answer_label = document.getElementById('comment-label');
-        if(response_json['output'] === 'error'){
-        answer_label.innerHTML = "ERROR"
-        } else {
-        answer_label.innerHTML = response ;
+        console.log(response_json);
+        var ss = "";
+        for(var i = 0; i < response_json['arr'].length; i++){
+            
+            console.log(response_json['arr']);
+            var answer_label = document.getElementById('answer-label');
+            if(response_json['output'] === 'error'){
+            answer_label.innerHTML = "ERROR"
+            } else {
+            ss += response_json['arr'][i]['name'] + " is located at " + response_json['arr'][i]['address'] + " and can be reached at " + response_json['arr'][i]['phone_number'] + " " + response_json['arr'][i]['comments'] + '<br><br><br>';
+            }
+            
         }
-
+        answer_label.innerHTML = ss;
 };
-
