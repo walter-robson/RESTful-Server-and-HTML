@@ -45,7 +45,7 @@ function makeRequest2(){
     } else {*/
      xhr.send(message_body) // last step - this actually makes the request
   //  }
-   makeCommentRequest(name);
+   //makeCommentRequest(name);
 };
 
 function updateResponse1(response){
